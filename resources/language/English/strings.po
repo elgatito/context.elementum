@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgctxt "#32000"
-msgid "[COLOR FF46B3B3]Quasar[/COLOR] Play"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
 msgstr ""
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Quasar[/COLOR] Season Assign"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Season Assign"
 msgstr ""
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Quasar[/COLOR] Assign"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
 msgstr ""
 
 msgctxt "#32003"
@@ -55,15 +55,13 @@ msgid "Cannot search TMDB"
 msgstr ""
 
 msgctxt "#32009"
-msgid "Playing with [COLOR FF46B3B3]Quasar[/COLOR]"
+msgid "Playing with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr ""
 
 msgctxt "#32010"
-msgid "Assigning stream with [COLOR FF46B3B3]Quasar[/COLOR]"
+msgid "Assigning stream with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr ""
 
 msgctxt "#32011"
-msgid "Assigning season stream with [COLOR FF46B3B3]Quasar[/COLOR]"
+msgid "Assigning season stream with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr ""
-
-

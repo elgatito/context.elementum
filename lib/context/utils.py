@@ -16,7 +16,7 @@ except:
 
 import requests
 
-from quasar.logger import log
+from elementum.logger import log
 
 ADDON = xbmcaddon.Addon()
 api_key = ""
@@ -34,7 +34,7 @@ def doAssign():
 
     log.debug("Assigning for: DBID=%s, IMDB=%s, MediaType=%s" % (dbid, imdbnumber, mediatype))
 
-    # xbmc.executebuiltin("XBMC.RunPlugin(plugin://plugin.video.quasar/library/movie/play/%s)" % imdbnumber)
+    # xbmc.executebuiltin("XBMC.RunPlugin(plugin://plugin.video.elementum/library/movie/play/%s)" % imdbnumber)
 
 
 def doPlay():
@@ -51,15 +51,15 @@ def doPlay():
 
     if mediatype == 'movie':
         tmdb_id = getTMDBId('movie', imdbnumber)
-        url = "plugin://plugin.video.quasar/library/movie/play/%s" % tmdb_id
+        url = "plugin://plugin.video.elementum/library/movie/play/%s" % tmdb_id
     elif mediatype == 'episode':
         (show_id, season_number, episode_number) = getEpisodeDetails()
         tmdb_id = getTMDBId('show', show_id)
-        url = "plugin://plugin.video.quasar/library/show/play/%s/%s/%s" % (tmdb_id, season_number, episode_number)
+        url = "plugin://plugin.video.elementum/library/show/play/%s/%s/%s" % (tmdb_id, season_number, episode_number)
 
     log.debug("Fetched TMDB: %s" % tmdb_id)
     if tmdb_id is not None:
-        log.debug("Starting Quasar with: %s" % url)
+        log.debug("Starting Elementum with: %s" % url)
         xbmc.Player().play(url)
 
 
