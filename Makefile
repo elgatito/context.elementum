@@ -5,7 +5,7 @@ GIT_USER = elgatito
 GIT_REPOSITORY = context.elementum
 TAG_VERSION = $(subst v,,$(GIT_VERSION))
 LAST_COMMIT = $(shell $(GIT) log -1 --pretty=\%B)
-VERSION = $(shell sed -ne "s/.*COLOR\]\"\sversion=\"\([0-9a-z\.\-]*\)\".*/\1/p" addon.xml)
+VERSION = $(shell sed -ne "s/.*version=\"\([0-9a-z\.\-]*\)\" provider-name=\"elgatito\".*/\1/p" addon.xml)
 ZIP_SUFFIX = zip
 ZIP_FILE = $(NAME)-$(VERSION).$(ZIP_SUFFIX)
 
