@@ -2,6 +2,6 @@
 <settings>
     <category label="32003">
         <!-- General -->
-        <setting id="tmdb_api_key" label="32004" type="text" default="" />
+        <!-- <setting id="tmdb_api_key" label="32004" type="text" default="" /> -->
     </category>
 </settings>
