@@ -2,24 +2,21 @@
 <addon id="context.elementum" name="Elementum Context Helper" version="0.0.1" provider-name="elgatito">
     <requires>
         <import addon="xbmc.python" version="2.23.0"/>
+        <import addon="script.module.requests"/>
         <import addon="plugin.video.elementum" optional="true"/>
     </requires>
     <extension point="kodi.context.item">
-        <menu id="kodi.core.main">
-            <item library="context_play.py">
-                <label>32000</label>
-                <icon>special://userdata/addon_data/context.elementum/icon.png</icon>
-                <visible>String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,movie)</visible>
-            </item>
-            <!--item library="context_assign_season.py">
-                <label>32001</label>
-                <visible>String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)</visible>
-            </item>
-            <item library="context_assign.py">
-                <label>32002</label>
-                <visible>String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,movie)</visible>
-            </item-->
-        </menu>
+      <menu id="kodi.core.main">
+          <label>My submenu</label>
+          <item library="context_play.py">
+            <label>32000</label>
+            <visible>StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode)</visible>
+          </item>
+          <!-- <item library="context_menu.py">
+            <label>32001</label>
+            <visible>StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,tvshow) | StringCompare(ListItem.dbtype,season) | StringCompare(ListItem.dbtype,episode)</visible>
+          </menu> -->
+    </menu>
     </extension>
     <extension point="kodi.addon.metadata">
         <summary lang="en">Elementum Context Menu</summary>
@@ -30,9 +27,5 @@
         <website>https://elementum.surge.sh</website>
         <source>https://github.com/elgatito/context.elementum</source>
         <forum></forum>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
     </extension>
 </addon>

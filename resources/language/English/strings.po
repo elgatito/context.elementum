@@ -23,7 +23,7 @@ msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
 msgstr ""
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Season Assign"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
 msgstr ""
 
 msgctxt "#32002"

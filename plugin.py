@@ -38,29 +38,16 @@ def doAssign():
 
 
 def doPlay():
-    if not configureTMDB():
-        return
-
     dbid = getDbId()
-    imdbnumber = getIMDBNumber()
     mediatype = getMediaType()
 
     xbmcgui.Dialog().notification(ADDON.getLocalizedString(32009), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
 
-    log.debug("Playing for: DBID=%s, IMDB=%s, MediaType=%s" % (dbid, imdbnumber, mediatype))
+    log.debug("Playing for: DBID=%s, MediaType=%s" % (dbid, mediatype))
 
-    if mediatype == 'movie':
-        tmdb_id = getTMDBId('movie', imdbnumber)
-        url = "plugin://plugin.video.elementum/library/movie/play/%s" % tmdb_id
-    elif mediatype == 'episode':
-        (show_id, season_number, episode_number) = getEpisodeDetails()
-        tmdb_id = getTMDBId('show', show_id)
-        url = "plugin://plugin.video.elementum/library/show/play/%s/%s/%s" % (tmdb_id, season_number, episode_number)
-
-    log.debug("Fetched TMDB: %s" % tmdb_id)
-    if tmdb_id is not None:
-        log.debug("Starting Elementum with: %s" % url)
-        xbmc.Player().play(url)
+    url = "plugin://plugin.video.elementum/context/%s/%s/play" % (mediatype, dbid)
+    log.debug("Starting Elementum with: %s" % url)
+    xbmc.Player().play(url)
 
 
 def getDbId():

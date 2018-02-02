@@ -23,8 +23,8 @@ msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Воспроизвести"
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Season Assign"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Выбрать стрим для сезона"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Управление"
 
 msgctxt "#32002"
 msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
