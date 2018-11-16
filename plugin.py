@@ -43,20 +43,29 @@ def doPlay():
 
     xbmcgui.Dialog().notification(ADDON.getLocalizedString(32009), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
 
-    log.debug("Playing for: DBID=%s, MediaType=%s" % (dbid, mediatype))
+    log.info("Playing for: DBID=%s, MediaType=%s" % (dbid, mediatype))
 
     url = "plugin://plugin.video.elementum/context/%s/%s/play" % (mediatype, dbid)
-    log.debug("Starting Elementum with: %s" % url)
+    log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)
 
 
 def getDbId():
     infolabel = xbmc.getInfoLabel('ListItem.Label')
     truelabel = sys.listitem.getLabel()
-    if infolabel == truelabel:
+    if infolabel == truelabel and xbmc.getInfoLabel('ListItem.DBID'):
         dbid = xbmc.getInfoLabel('ListItem.DBID')
-    else:
+    elif 'elementum' in sys.listitem.getfilename():
         dbid = sys.listitem.getfilename().split('?')[0].rstrip('/').split('/')[-1]
+    else:
+        if xbmc.getInfoLabel('ListItem.Episode') and xbmc.getInfoLabel('ListItem.TVSHowTitle') and xbmc.getInfoLabel('ListItem.Season'):
+            season = int(xbmc.getInfoLabel('ListItem.Season'))
+            episode = int(xbmc.getInfoLabel('ListItem.Episode'))
+
+            dbid = '{} s{:02d}e{:02d}'.format(xbmc.getInfoLabel('ListItem.TVSHowTitle'), season, episode)
+            dbid = requests.utils.quote(dbid)
+        else:
+            dbid = requests.utils.quote(infolabel)
     return dbid
 
 
@@ -77,13 +86,14 @@ def getMediaType():
         # No other way, we query Kodi for information
         dbid = getDbId()
 
-        response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": { "movieid": %s }, "id": "0"}' % dbid)
-        if 'error' not in response:
-            return 'movie'
+        if dbid:
+            response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": { "movieid": %s }, "id": "0"}' % dbid)
+            if 'error' not in response:
+                return 'movie'
 
-        response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodeDetails", "params": { "episodeid": %s }, "id": "0"}' % dbid)
-        if 'error' not in response:
-            return 'episode'
+            response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodeDetails", "params": { "episodeid": %s }, "id": "0"}' % dbid)
+            if 'error' not in response:
+                return 'episode'
 
         return None
 
