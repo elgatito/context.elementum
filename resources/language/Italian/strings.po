@@ -1,0 +1,67 @@
+# Kodi Media Center language file
+# Addon Name: provider
+# Addon id: context.magnetic.dialog
+# Addon Provider: mancuniancol
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kodi Addons\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-05 05:53-0400\n"
+"PO-Revision-Date: 2019-10-12 16:17+0200\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: EffeF\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#32000"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Riproduci"
+
+msgctxt "#32001"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Controllo"
+
+msgctxt "#32002"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Assegna"
+
+msgctxt "#32003"
+msgid "General"
+msgstr "Generale"
+
+msgctxt "#32004"
+msgid "TMDB Api Key"
+msgstr "Api Key TMDB"
+
+msgctxt "#32005"
+msgid "Please define TMDB API key"
+msgstr "Si prega di definire la Api Key TMDB"
+
+msgctxt "#32006"
+msgid "TMDB API key not defined"
+msgstr "Api Key TMDB non definita"
+
+msgctxt "#32007"
+msgid "Error"
+msgstr "Errore"
+
+msgctxt "#32008"
+msgid "Cannot search TMDB"
+msgstr "Impossibile cercare TMDB"
+
+msgctxt "#32009"
+msgid "Playing with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Riproduci con [COLOR FF46B3B3]Elementum[/COLOR]"
+
+msgctxt "#32010"
+msgid "Assigning stream with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Assegnare stream con [COLOR FF46B3B3]Elementum[/COLOR]"
+
+msgctxt "#32011"
+msgid "Assigning season stream with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Assegnare stream di stagione con [COLOR FF46B3B3]Elementum[/COLOR]"
