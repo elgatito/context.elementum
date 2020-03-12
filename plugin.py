@@ -50,6 +50,19 @@ def doPlay():
     xbmc.Player().play(url)
 
 
+def doDownload():
+    dbid = getDbId()
+    mediatype = getMediaType()
+
+    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32009), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
+
+    log.info("Downloading for: DBID=%s, MediaType=%s" % (dbid, mediatype))
+
+    url = "plugin://plugin.video.elementum/context/%s/%s/download" % (mediatype, dbid)
+    log.info("Starting Elementum with: %s" % url)
+    xbmc.Player().play(url)
+
+
 def getDbId():
     infolabel = xbmc.getInfoLabel('ListItem.Label')
     truelabel = sys.listitem.getLabel()
