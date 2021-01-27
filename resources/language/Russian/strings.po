@@ -69,3 +69,7 @@ msgstr "Выбор стрима для сезона в [COLOR FF46B3B3]Elementum
 msgctxt "#32012"
 msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Скачать"
+
+msgctxt "#32013"
+msgid "Downloading with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Скачивание в [COLOR FF46B3B3]Elementum[/COLOR]"

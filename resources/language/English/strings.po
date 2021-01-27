@@ -69,3 +69,7 @@ msgstr ""
 msgctxt "#32012"
 msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
 msgstr ""
+
+msgctxt "#32013"
+msgid "Downloading with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr ""

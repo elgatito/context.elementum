@@ -54,7 +54,7 @@ def doDownload():
     dbid = getDbId()
     mediatype = getMediaType()
 
-    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32009), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
+    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32013), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
 
     log.info("Downloading for: DBID=%s, MediaType=%s" % (dbid, mediatype))
 
