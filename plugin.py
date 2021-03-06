@@ -66,10 +66,16 @@ def doDownload():
 def getDbId():
     infolabel = xbmc.getInfoLabel('ListItem.Label')
     truelabel = sys.listitem.getLabel()
+
+    try:
+        path = sys.listitem.getfilename()
+    except AttributeError:
+        path = sys.listitem.getPath()
+
     if infolabel == truelabel and xbmc.getInfoLabel('ListItem.DBID'):
         dbid = xbmc.getInfoLabel('ListItem.DBID')
-    elif 'elementum' in sys.listitem.getfilename():
-        dbid = sys.listitem.getfilename().split('?')[0].rstrip('/').split('/')[-1]
+    elif 'elementum' in path:
+        dbid = path.split('?')[0].rstrip('/').split('/')[-1]
     else:
         if xbmc.getInfoLabel('ListItem.Episode') and xbmc.getInfoLabel('ListItem.TVSHowTitle') and xbmc.getInfoLabel('ListItem.Season'):
             season = int(xbmc.getInfoLabel('ListItem.Season'))
