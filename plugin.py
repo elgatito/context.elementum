@@ -66,16 +66,26 @@ def doDownload():
 def getDbId():
     infolabel = xbmc.getInfoLabel('ListItem.Label')
     truelabel = sys.listitem.getLabel()
+
     if infolabel == truelabel and xbmc.getInfoLabel('ListItem.DBID'):
         dbid = xbmc.getInfoLabel('ListItem.DBID')
-    elif 'elementum' in sys.listitem.getfilename():
-        dbid = sys.listitem.getfilename().split('?')[0].rstrip('/').split('/')[-1]
     else:
         if xbmc.getInfoLabel('ListItem.Episode') and xbmc.getInfoLabel('ListItem.TVSHowTitle') and xbmc.getInfoLabel('ListItem.Season'):
             season = int(xbmc.getInfoLabel('ListItem.Season'))
             episode = int(xbmc.getInfoLabel('ListItem.Episode'))
 
             dbid = '{} s{:02d}e{:02d}'.format(xbmc.getInfoLabel('ListItem.TVSHowTitle'), season, episode)
+            dbid = requests.utils.quote(dbid)
+        elif xbmc.getInfoLabel('ListItem.TVSHowTitle') and xbmc.getInfoLabel('ListItem.Season'):
+            season = int(xbmc.getInfoLabel('ListItem.Season'))
+
+            dbid = '{} s{:02d}'.format(xbmc.getInfoLabel('ListItem.TVSHowTitle'), season)
+            dbid = requests.utils.quote(dbid)
+        elif xbmc.getInfoLabel('ListItem.Title') and xbmc.getInfoLabel('ListItem.Year'):
+            title = xbmc.getInfoLabel('ListItem.Title')
+            year = xbmc.getInfoLabel('ListItem.Year')
+
+            dbid = '{} ({})'.format(title, year)
             dbid = requests.utils.quote(dbid)
         else:
             dbid = requests.utils.quote(infolabel)
@@ -107,6 +117,10 @@ def getMediaType():
             response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodeDetails", "params": { "episodeid": %s }, "id": "0"}' % dbid)
             if 'error' not in response:
                 return 'episode'
+
+            response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetSeasonDetails", "params": { "seasonid": %s }, "id": "0"}' % dbid)
+            if 'error' not in response:
+                return 'season'
 
         return None
 
