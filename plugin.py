@@ -34,7 +34,7 @@ def doAssign():
 
     log.debug("Assigning for: DBID=%s, IMDB=%s, MediaType=%s" % (dbid, imdbnumber, mediatype))
 
-    # xbmc.executebuiltin("XBMC.RunPlugin(plugin://plugin.video.elementum/library/movie/play/%s)" % imdbnumber)
+    # xbmc.executebuiltin("RunPlugin(plugin://plugin.video.elementum/library/movie/play/%s)" % imdbnumber)
 
 
 def doPlay():
