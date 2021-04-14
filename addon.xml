@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="context.elementum" name="Elementum Context Helper" version="0.0.5" provider-name="elgatito">
     <requires>
+        <import addon="xbmc.addon" version="16.0.0" />
         <import addon="script.module.requests"/>
         <import addon="plugin.video.elementum" optional="true"/>
+        <import addon="script.module.future" version="0.16.0.4"/>
     </requires>
     <extension point="kodi.context.item">
       <menu id="kodi.core.main">
@@ -13,6 +15,10 @@
           </item>
           <item library="context_download.py">
             <label>32012</label>
+            <visible>StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season)</visible>
+          </item>
+          <item library="context_assign.py">
+            <label>32002</label>
             <visible>StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season)</visible>
           </item>
           <!-- <item library="context_menu.py">
