@@ -1,7 +1,7 @@
 # Kodi Media Center language file
-# Addon Name: provider
-# Addon id: context.magnetic.dialog
-# Addon Provider: mancuniancol
+# Addon Name: Elementum Context Helper
+# Addon id: context.elementum
+# Addon Provider: elgatito
 #
 msgid ""
 msgstr ""
@@ -27,8 +27,8 @@ msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Управление"
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Выбрать стрим"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Назначить торрент"
 
 msgctxt "#32003"
 msgid "General"
@@ -59,8 +59,8 @@ msgid "Playing with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "Воспроизведение в [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32010"
-msgid "Assigning stream with [COLOR FF46B3B3]Elementum[/COLOR]"
-msgstr "Выбор стрима в [COLOR FF46B3B3]Elementum[/COLOR]"
+msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Назначение торрента в [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32011"
 msgid "Assigning season stream with [COLOR FF46B3B3]Elementum[/COLOR]"
@@ -73,3 +73,15 @@ msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Скачать"
 msgctxt "#32013"
 msgid "Downloading with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "Скачивание в [COLOR FF46B3B3]Elementum[/COLOR]"
+
+msgctxt "#32014"
+msgid "Could not find TMDB info"
+msgstr "Невозможно найти TMDB info"
+
+msgctxt "#32015"
+msgid "Could not get torrent info"
+msgstr "Невозможно найти информацию о торренте"
+
+msgctxt "#32016"
+msgid "Could not get Kodi library ID"
+msgstr "Невозможно найти идентификатор в библиотеке Kodi"

@@ -15,6 +15,14 @@ except:
     import json as simplejson
 
 import requests
+import re
+
+from future.utils import PY3
+
+if PY3:
+    from urllib.parse import urlparse, parse_qs
+else:
+    from urlparse import urlparse, parse_qs
 
 from elementum.logger import log
 
@@ -22,7 +30,7 @@ ADDON = xbmcaddon.Addon()
 api_key = ""
 
 
-def doAssign():
+def _doAssign():
     if not configureTMDB():
         return
 
@@ -36,6 +44,89 @@ def doAssign():
 
     # xbmc.executebuiltin("RunPlugin(plugin://plugin.video.elementum/library/movie/play/%s)" % imdbnumber)
 
+def doAssign():
+    mediatype = getMediaType()
+
+    try:
+        path = sys.listitem.getfilename()
+    except AttributeError:
+        path = sys.listitem.getPath()
+
+    use_tmdb_id = False
+
+    if path.startswith("plugin://plugin.video.elementum"):
+        """plugin://plugin.video.elementum/show/1622/season/15/episode/1/links/Supernatural%20S15E01
+        plugin://plugin.video.elementum/show/1622/season/15/episodes
+        plugin://plugin.video.elementum/movie/628/links/Interview%20with%20the%20Vampire%20%281994%29"""
+        use_tmdb_id = True
+        result = re.search(r'plugin://plugin.video.elementum/[^/]+/(\d+)/.*', path)
+        if result:
+            tmdbID = result.group(1)
+        else:
+            log.error("Could not find TMDB id for %s" % path)
+            xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32014), xbmcgui.NOTIFICATION_WARNING, 3000)
+            return
+
+        if mediatype == 'season':
+            result = re.search(r'plugin://plugin.video.elementum/[^/]+/\d+/season/(\d+)/.*', path)
+            if result:
+                season_number = result.group(1)
+            else:
+                log.error("Could not find season number for %s" % path)
+                xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32014), xbmcgui.NOTIFICATION_WARNING, 3000)
+                return
+
+        if mediatype == 'episode':
+            result = re.search(r'plugin://plugin.video.elementum/[^/]+/\d+/season/(\d+)/episode/(\d+)/.*', path)
+            if result:
+                season_number = result.group(1)
+                episode_number = result.group(2)
+            else:
+                log.error("Could not find season/episode number for %s" % path)
+                xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32014), xbmcgui.NOTIFICATION_WARNING, 3000)
+                return
+    else:
+        dbid = getDbId()
+        if not dbid.isdigit():
+            log.error("Kodi library ID is wrong %s" % dbid)
+            xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32016), xbmcgui.NOTIFICATION_WARNING, 3000)
+            return
+
+    # we also can use plugin://plugin.video.elementum/torrents/
+    file = xbmcgui.Dialog().browseSingle(1, ADDON.getLocalizedString(32010), 'files', '', False, False, 'plugin://plugin.video.elementum/history/')
+
+    if file == '':
+        return
+
+    try:
+        parsed_url = urlparse(file)
+        params = parse_qs(parsed_url.query)
+        if 'infohash' in params:
+            torrentid = params['infohash'][0]
+        else:
+            torrentid = params['resume'][0]
+    except Exception as e:
+        log.error("Could not get torrent info for %s: %s" % (file, e))
+        xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32015), xbmcgui.NOTIFICATION_WARNING, 3000)
+        return
+
+    if not use_tmdb_id:
+        url = "plugin://plugin.video.elementum/context/torrents/assign/%s/kodi/%s/%s" % (torrentid, mediatype, dbid)
+        log.info("Assigning torrent %s for: DBID=%s, MediaType=%s" % (torrentid, dbid, mediatype))
+    else:
+        if mediatype == 'movie':
+            url = "plugin://plugin.video.elementum/context/torrents/assign/%s/tmdb/%s/%s" % (torrentid, mediatype, tmdbID)
+        elif mediatype == 'season':
+            url = "plugin://plugin.video.elementum/context/torrents/assign/%s/tmdb/show/%s/%s/%s" % (torrentid, tmdbID, mediatype, season_number)
+        elif mediatype == 'episode':
+            url = "plugin://plugin.video.elementum/context/torrents/assign/%s/tmdb/show/%s/season/%s/%s/%s" % (torrentid, tmdbID, season_number, mediatype, episode_number)
+        log.info("Assigning torrent %s for: TMDBID=%s, MediaType=%s" % (torrentid, tmdbID, mediatype))
+
+    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32010), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
+
+    log.info("Starting Elementum with: %s" % url)
+
+    xbmc.Player().play(url)
 
 def doPlay():
     dbid = getDbId()
@@ -45,7 +136,7 @@ def doPlay():
 
     log.info("Playing for: DBID=%s, MediaType=%s" % (dbid, mediatype))
 
-    url = "plugin://plugin.video.elementum/context/%s/%s/play" % (mediatype, dbid)
+    url = "plugin://plugin.video.elementum/context/media/%s/%s/play" % (mediatype, dbid)
     log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)
 
@@ -58,7 +149,7 @@ def doDownload():
 
     log.info("Downloading for: DBID=%s, MediaType=%s" % (dbid, mediatype))
 
-    url = "plugin://plugin.video.elementum/context/%s/%s/download" % (mediatype, dbid)
+    url = "plugin://plugin.video.elementum/context/media/%s/%s/download" % (mediatype, dbid)
     log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)
 
@@ -88,7 +179,7 @@ def getDbId():
             dbid = '{} ({})'.format(title, year)
             dbid = requests.utils.quote(dbid)
         else:
-            dbid = requests.utils.quote(infolabel)
+            dbid = requests.utils.quote(infolabel) if infolabel else requests.utils.quote(truelabel)
     return dbid
 
 
@@ -109,7 +200,7 @@ def getMediaType():
         # No other way, we query Kodi for information
         dbid = getDbId()
 
-        if dbid:
+        if dbid.isdigit():
             response = getJSONResponse('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": { "movieid": %s }, "id": "0"}' % dbid)
             if 'error' not in response:
                 return 'movie'
