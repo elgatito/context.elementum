@@ -62,10 +62,6 @@ msgctxt "#32010"
 msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr ""
 
-msgctxt "#32011"
-msgid "Assigning season stream with [COLOR FF46B3B3]Elementum[/COLOR]"
-msgstr ""
-
 msgctxt "#32012"
 msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
 msgstr ""
