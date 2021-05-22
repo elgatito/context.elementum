@@ -27,8 +27,8 @@ msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Controllo"
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Assegna"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Assegna torrent"
 
 msgctxt "#32003"
 msgid "General"
@@ -59,8 +59,8 @@ msgid "Playing with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "Riproduci con [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32010"
-msgid "Assigning stream with [COLOR FF46B3B3]Elementum[/COLOR]"
-msgstr "Assegnare stream con [COLOR FF46B3B3]Elementum[/COLOR]"
+msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Assegnare torrent con [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32011"
 msgid "Assigning season stream with [COLOR FF46B3B3]Elementum[/COLOR]"

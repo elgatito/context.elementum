@@ -27,7 +27,7 @@ msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] בקרה"
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] השמה"
 
 msgctxt "#32003"
@@ -59,7 +59,7 @@ msgid "Playing with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "הפעלה באמצעות [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32010"
-msgid "Assigning stream with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "שיוך סטרים ל־ [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32011"

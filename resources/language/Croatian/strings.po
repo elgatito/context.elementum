@@ -27,8 +27,8 @@ msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
 msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Upravljanje"
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Dodijeli strujanje"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Dodijeli torrent"
 
 msgctxt "#32003"
 msgid "General"
@@ -59,8 +59,8 @@ msgid "Playing with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "Reprodukcija u [COLOR FF46B3B3]Elementumu[/COLOR]"
 
 msgctxt "#32010"
-msgid "Assigning stream with [COLOR FF46B3B3]Elementum[/COLOR]"
-msgstr "Dodjeljivanje strujanja u [COLOR FF46B3B3]Elementum[/COLOR]"
+msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
+msgstr "Dodjeljivanje torrent u [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32011"
 msgid "Assigning season stream with [COLOR FF46B3B3]Elementum[/COLOR]"
