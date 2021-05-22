@@ -30,20 +30,6 @@ ADDON = xbmcaddon.Addon()
 api_key = ""
 
 
-def _doAssign():
-    if not configureTMDB():
-        return
-
-    dbid = getDbId()
-    imdbnumber = getIMDBNumber()
-    mediatype = getMediaType()
-
-    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32011) if mediatype == 'season' else ADDON.getLocalizedString(32010), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
-
-    log.debug("Assigning for: DBID=%s, IMDB=%s, MediaType=%s" % (dbid, imdbnumber, mediatype))
-
-    # xbmc.executebuiltin("RunPlugin(plugin://plugin.video.elementum/library/movie/play/%s)" % imdbnumber)
-
 def doAssign():
     mediatype = getMediaType()
 
