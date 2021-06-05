@@ -19,16 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgctxt "#32000"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Воспроизвести"
+msgid "Play"
+msgstr "Воспроизвести"
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Управление"
+msgid "Info"
+msgstr "Информация"
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Назначить торрент"
+msgid "Assign torrent"
+msgstr "Назначить торрент"
 
 msgctxt "#32003"
 msgid "General"
@@ -62,9 +62,13 @@ msgctxt "#32010"
 msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "Назначение торрента в [COLOR FF46B3B3]Elementum[/COLOR]"
 
+msgctxt "#32011"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Menu..."
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Меню..."
+
 msgctxt "#32012"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Скачать"
+msgid "Download"
+msgstr "Скачать"
 
 msgctxt "#32013"
 msgid "Downloading with [COLOR FF46B3B3]Elementum[/COLOR]"
@@ -81,3 +85,7 @@ msgstr "Невозможно найти информацию о торренте
 msgctxt "#32016"
 msgid "Could not get Kodi library ID"
 msgstr "Невозможно найти идентификатор в библиотеке Kodi"
+
+msgctxt "#32017"
+msgid "Remove from library"
+msgstr "Удалить из библиотеки"

@@ -19,16 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgctxt "#32000"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] הפעלה"
+msgid "Play"
+msgstr "הפעלה"
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] בקרה"
+msgid "Info"
+msgstr ""
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] השמה"
+msgid "Assign torrent"
+msgstr "השמה"
 
 msgctxt "#32003"
 msgid "General"
@@ -62,8 +62,12 @@ msgctxt "#32010"
 msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "שיוך סטרים ל־ [COLOR FF46B3B3]Elementum[/COLOR]"
 
+msgctxt "#32011"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Menu..."
+msgstr ""
+
 msgctxt "#32012"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
+msgid "Download"
 msgstr ""
 
 msgctxt "#32013"
@@ -80,4 +84,8 @@ msgstr ""
 
 msgctxt "#32016"
 msgid "Could not get Kodi library ID"
+msgstr ""
+
+msgctxt "#32017"
+msgid "Remove from library"
 msgstr ""
