@@ -9,5 +9,6 @@ if __name__ == '__main__':
         path = sys.listitem.getPath()
     truelabel = sys.listitem.getLabel()
     infolabel = xbmc.getInfoLabel('ListItem.Label')
+    dbid = xbmc.getInfoLabel('ListItem.DBID')
 
-    xbmcgui.Dialog().notification("truelabel: %s" % truelabel, "infolabel: %s; path %s" % (infolabel, path))
+    xbmcgui.Dialog().notification("truelabel: %s" % truelabel, "infolabel: %s; dbid: %s; path: %s;" % (infolabel, dbid, path))
