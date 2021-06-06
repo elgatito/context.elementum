@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgctxt "#32000"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
+msgid "Play"
 msgstr ""
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
+msgid "Info"
 msgstr ""
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
+msgid "Assign torrent"
 msgstr ""
 
 msgctxt "#32003"
@@ -60,8 +60,12 @@ msgctxt "#32010"
 msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr ""
 
+msgctxt "#32011"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Menu..."
+msgstr ""
+
 msgctxt "#32012"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
+msgid "Download"
 msgstr ""
 
 msgctxt "#32013"
@@ -78,4 +82,8 @@ msgstr ""
 
 msgctxt "#32016"
 msgid "Could not get Kodi library ID"
+msgstr ""
+
+msgctxt "#32017"
+msgid "Remove from library"
 msgstr ""

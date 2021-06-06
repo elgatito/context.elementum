@@ -19,16 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgctxt "#32000"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Play"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Spela"
+msgid "Play"
+msgstr "Spela"
 
 msgctxt "#32001"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Control"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Kontroll"
+msgid "Info"
+msgstr ""
 
 msgctxt "#32002"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Assign torrent"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Tilldela torrent"
+msgid "Assign torrent"
+msgstr "Tilldela torrent"
 
 msgctxt "#32003"
 msgid "General"
@@ -62,9 +62,13 @@ msgctxt "#32010"
 msgid "Assigning torrent with [COLOR FF46B3B3]Elementum[/COLOR]"
 msgstr "Tilldelar torrent med [COLOR FF46B3B3]Elementum[/COLOR]"
 
+msgctxt "#32011"
+msgid "[COLOR FF46B3B3]Elementum[/COLOR] Menu..."
+msgstr ""
+
 msgctxt "#32012"
-msgid "[COLOR FF46B3B3]Elementum[/COLOR] Download"
-msgstr "[COLOR FF46B3B3]Elementum[/COLOR] Hämta"
+msgid "Download"
+msgstr "Hämta"
 
 msgctxt "#32013"
 msgid "Downloading with [COLOR FF46B3B3]Elementum[/COLOR]"
@@ -80,4 +84,8 @@ msgstr ""
 
 msgctxt "#32016"
 msgid "Could not get Kodi library ID"
+msgstr ""
+
+msgctxt "#32017"
+msgid "Remove from library"
 msgstr ""

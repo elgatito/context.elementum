@@ -140,6 +140,20 @@ def doDownload():
     xbmc.Player().play(url)
 
 
+def doLibraryAction(action):
+    dbid = getDbId()
+    mediatype = getMediaType()
+
+    heading = ADDON.getLocalizedString(32017) if action == "add" else "Unsupported action"
+    xbmcgui.Dialog().notification(heading, sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
+
+    log.info("%s library item: DBID=%s, MediaType=%s" % (action, dbid, mediatype))
+
+    url = "plugin://plugin.video.elementum/context/library/%s/%s/%s" % (mediatype, dbid, action)
+    log.info("Starting Elementum with: %s" % url)
+    xbmc.Player().play(url)
+
+
 def getDbId():
     infolabel = xbmc.getInfoLabel('ListItem.Label')
     truelabel = sys.listitem.getLabel()
