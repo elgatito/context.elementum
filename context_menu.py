@@ -2,6 +2,9 @@ import sys
 import xbmc
 import xbmcgui
 
+from elementum.logger import log
+
+
 if __name__ == '__main__':
     try:
         path = sys.listitem.getfilename()
@@ -11,4 +14,5 @@ if __name__ == '__main__':
     infolabel = xbmc.getInfoLabel('ListItem.Label')
     dbid = xbmc.getInfoLabel('ListItem.DBID')
 
+    log.info("truelabel: %s; infolabel: %s; dbid: %s; path: %s;" % (truelabel, infolabel, dbid, path))
     xbmcgui.Dialog().notification("truelabel: %s" % truelabel, "infolabel: %s; dbid: %s; path: %s;" % (infolabel, dbid, path))
