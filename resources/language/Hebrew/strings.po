@@ -89,3 +89,11 @@ msgstr ""
 msgctxt "#32017"
 msgid "Remove from library"
 msgstr ""
+
+msgctxt "#32018"
+msgid "Mark as watched in Trakt"
+msgstr ""
+
+msgctxt "#32019"
+msgid "Mark as unwatched in Trakt"
+msgstr ""
