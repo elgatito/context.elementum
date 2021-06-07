@@ -36,7 +36,7 @@
                 </item>
                 <item library="context_menu.py">
                     <label>32001</label>
-                    <visible>System.GetBool(debug.extralogging)+[StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season)]</visible>
+                    <visible>System.GetBool(debug.extralogging)+[StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | StringCompare(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
                 </item>
             </menu>
         </menu>
