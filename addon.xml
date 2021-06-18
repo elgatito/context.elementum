@@ -26,10 +26,18 @@
                     <label>32017</label>
                     <visible>Integer.IsGreater(ListItem.DBID,0)+[StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season)]</visible>
                 </item>
-                <!-- <item library="context_menu.py">
+                <item library="context_trakt.py" args="watched">
+                    <label>32018</label>
+                    <visible>Integer.IsGreater(ListItem.DBID,0)+Integer.IsEqual(ListItem.PlayCount,0)+[StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | StringCompare(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+                </item>
+                <item library="context_trakt.py" args="unwatched">
+                    <label>32019</label>
+                    <visible>Integer.IsGreater(ListItem.DBID,0)+Integer.IsGreater(ListItem.PlayCount,0)+[StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | StringCompare(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+                </item>
+                <item library="context_menu.py">
                     <label>32001</label>
-                    <visible>StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season)</visible>
-                </item> -->
+                    <visible>System.GetBool(debug.extralogging)+[StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) | StringCompare(ListItem.dbtype,season) | StringCompare(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+                </item>
             </menu>
         </menu>
     </extension>

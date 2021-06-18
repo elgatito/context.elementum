@@ -89,3 +89,11 @@ msgstr "Невозможно найти идентификатор в библи
 msgctxt "#32017"
 msgid "Remove from library"
 msgstr "Удалить из библиотеки"
+
+msgctxt "#32018"
+msgid "Mark as watched in Trakt"
+msgstr "Отмет. просм. в Trakt"
+
+msgctxt "#32019"
+msgid "Mark as unwatched in Trakt"
+msgstr "Отмет. непросм. в Trakt"
