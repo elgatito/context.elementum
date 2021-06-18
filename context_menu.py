@@ -63,7 +63,7 @@ info_labels = [
 ]
 
 if __name__ == '__main__':
-    item = sys.listitem # xbmcgui.ListItem()
+    item = sys.listitem  # xbmcgui.ListItem()
     try:
         path = item.getfilename()
     except AttributeError:
