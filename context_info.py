@@ -88,4 +88,4 @@ if __name__ == '__main__':
     log.info("Labels: %s" % json.dumps(all_labels["result"], indent=4))
 
     log.info("truelabel: %s; infolabel: %s; dbid: %s; tmdbID: %s; mediatype: %s; path: %s;" % (truelabel, infolabel, dbid, tmdbID, mediatype, path))
-    xbmcgui.Dialog().notification("truelabel: %s" % truelabel, "infolabel: %s; dbid: %s; tmdbID: %s; mediatype: %s; path: %s;" % (infolabel, dbid, tmdbID, mediatype, path))
+    xbmcgui.Dialog().notification("truelabel: %s" % truelabel, "infolabel: %s; dbid: %s; tmdbID: %s; mediatype: %s;" % (infolabel, dbid, tmdbID, mediatype))
