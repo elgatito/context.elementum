@@ -167,11 +167,38 @@ def doTraktAction(action):
         heading = ADDON.getLocalizedString(32019)
     else:
         heading = "Unsupported action"
+
+    if not dbid.isdigit():
+        showtmdbid = xbmc.getInfoLabel('ListItem.Property(ShowTMDBId)')
+        try:
+            tmdbID = sys.listitem.getUniqueID('tmdb')
+        except AttributeError:
+            tmdbID = ""
+        if tmdbID == "" or ((mediatype == 'season' or mediatype == 'episode') and showtmdbid == ""):
+            log.error("Could not find TMDB id for %s" % dbid)
+            xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32014), xbmcgui.NOTIFICATION_WARNING, 3000)
+            return
+
     xbmcgui.Dialog().notification(heading, sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
+    if not dbid.isdigit():
+        log.info("Make %s non-library item: tmdbID=%s, MediaType=%s" % (action, tmdbID, mediatype))
+    else:
+        log.info("Make %s library item: DBID=%s, MediaType=%s" % (action, dbid, mediatype))
 
-    log.info("%s library item: DBID=%s, MediaType=%s" % (action, dbid, mediatype))
-
-    url = "plugin://plugin.video.elementum/context/media/%s/%s/%s" % (mediatype, dbid, action)
+    if not dbid.isdigit():
+        if mediatype == 'movie':
+            url = "plugin://plugin.video.elementum/movie/%s/%s" % (tmdbID, action)
+        if mediatype == 'tvshow':
+            url = "plugin://plugin.video.elementum/show/%s/%s" % (tmdbID, action)
+        elif mediatype == 'season':
+            season = xbmc.getInfoLabel('ListItem.Season')
+            url = "plugin://plugin.video.elementum/show/%s/season/%s/%s" % (showtmdbid, season, action)
+        elif mediatype == 'episode':
+            season = xbmc.getInfoLabel('ListItem.Season')
+            episode = xbmc.getInfoLabel('ListItem.Episode')
+            url = "plugin://plugin.video.elementum/show/%s/season/%s/episode/%s/%s" % (showtmdbid, season, episode, action)
+    else:
+        url = "plugin://plugin.video.elementum/context/media/%s/%s/%s" % (mediatype, dbid, action)
     log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)
 

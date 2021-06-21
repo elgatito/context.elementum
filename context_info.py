@@ -16,6 +16,7 @@ info_labels = [
     "ListItem.TMDB",
     "ListItem.UniqueID(tmdb)",
     "ListItem.UniqueID(Elementum)",
+    "ListItem.Property(ShowTMDBId)",
     "ListItem.Label",
     "ListItem.Label2",
     "ListItem.ThumbnailImage",
