@@ -76,7 +76,7 @@ msgstr "Скачивание в [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32014"
 msgid "Could not find TMDB info"
-msgstr "Невозможно найти TMDB info"
+msgstr "Невозможно найти TMDB информацию"
 
 msgctxt "#32015"
 msgid "Could not get torrent info"
