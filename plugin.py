@@ -140,11 +140,24 @@ def doDownload():
     dbid = getDbId()
     mediatype = getMediaType()
 
+    use_elementum_path = False
+    if not dbid.isdigit():
+        try:
+            path = sys.listitem.getfilename()
+        except AttributeError:
+            path = sys.listitem.getPath()
+        if path.startswith("plugin://plugin.video.elementum"):
+            use_elementum_path = True
+
     xbmcgui.Dialog().notification(ADDON.getLocalizedString(32013), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
 
-    log.info("Downloading for: DBID=%s, MediaType=%s" % (dbid, mediatype))
+    if use_elementum_path:
+        log.info("Downloading elementum item: path=%s, MediaType=%s" % (path, mediatype))
+        url = re.sub(r'/(play|links)(/?[^/]*)$', r'/download\g<2>', path, count=1)
+    else:
+        log.info("Downloading library item: DBID=%s, MediaType=%s" % (dbid, mediatype))
+        url = "plugin://plugin.video.elementum/context/media/%s/%s/download" % (mediatype, dbid)
 
-    url = "plugin://plugin.video.elementum/context/media/%s/%s/download" % (mediatype, dbid)
     log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)
 
