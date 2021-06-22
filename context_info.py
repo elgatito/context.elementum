@@ -61,6 +61,7 @@ info_labels = [
     "ListItem.Progress",
     "ListItem.Status",
     "ListItem.Count",
+    "ListItem.PercentPlayed",
 ]
 
 if __name__ == '__main__':
@@ -81,7 +82,8 @@ if __name__ == '__main__':
     properties = {
         'resume_time': item.getProperty('ResumeTime'),
         'start_offset': item.getProperty('StartOffset'),
-        'start_percent': item.getProperty('StartPercent')
+        'start_percent': item.getProperty('StartPercent'),
+        'total_time': item.getProperty('TotalTime')
     }
     log.info("Properties: %s;" % properties)
 
