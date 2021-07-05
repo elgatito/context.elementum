@@ -127,8 +127,10 @@ def doPlay():
 
     if use_elementum_path:
         log.info("Playing elementum item: path=%s, MediaType=%s" % (path, mediatype))
-        url = path
-    else:
+        if mediatype == 'season':
+            url = re.sub(r'/(episodes)(/?[^/]*)$', r'/links\g<2>', path, count=1)
+        else:
+            url = path
         log.info("Playing library item: DBID=%s, MediaType=%s" % (dbid, mediatype))
         url = "plugin://plugin.video.elementum/context/media/%s/%s/play" % (mediatype, dbid)
 
@@ -153,7 +155,10 @@ def doDownload():
 
     if use_elementum_path:
         log.info("Downloading elementum item: path=%s, MediaType=%s" % (path, mediatype))
-        url = re.sub(r'/(play|links)(/?[^/]*)$', r'/download\g<2>', path, count=1)
+        if mediatype == 'season':
+            url = re.sub(r'/(episodes)(/?[^/]*)$', r'/download\g<2>', path, count=1)
+        else:
+            url = re.sub(r'/(play|links)(/?[^/]*)$', r'/download\g<2>', path, count=1)
     else:
         log.info("Downloading library item: DBID=%s, MediaType=%s" % (dbid, mediatype))
         url = "plugin://plugin.video.elementum/context/media/%s/%s/download" % (mediatype, dbid)
