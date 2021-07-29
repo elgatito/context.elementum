@@ -131,6 +131,7 @@ def doPlay():
             url = re.sub(r'/(episodes)(/?[^/]*)$', r'/links\g<2>', path, count=1)
         else:
             url = path
+    else:
         log.info("Playing library item: DBID=%s, MediaType=%s" % (dbid, mediatype))
         url = "plugin://plugin.video.elementum/context/media/%s/%s/play" % (mediatype, dbid)
 
