@@ -20,9 +20,10 @@ import re
 from future.utils import PY3
 
 if PY3:
-    from urllib.parse import urlparse, parse_qs
+    from urllib.parse import urlparse, parse_qs, quote
 else:
     from urlparse import urlparse, parse_qs
+    from urllib import quote
 
 from elementum.logger import log
 
@@ -72,7 +73,7 @@ def doAssign():
     # we also can use plugin://plugin.video.elementum/torrents/
     file = xbmcgui.Dialog().browseSingle(1, ADDON.getLocalizedString(32010), 'files', '', False, False, 'plugin://plugin.video.elementum/history/')
 
-    if file == '':
+    if not file or file == 'plugin://plugin.video.elementum/history/':
         return
 
     try:
@@ -110,59 +111,62 @@ def doAssign():
     xbmc.Player().play(url)
 
 
-def doPlay():
+def doPlayDownload(action, is_custom=False):
     dbid = getDbId()
     mediatype = getMediaType()
 
     use_elementum_path = False
-    if not dbid.isdigit():
-        try:
-            path = sys.listitem.getfilename()
-        except AttributeError:
-            path = sys.listitem.getPath()
-        if path.startswith("plugin://plugin.video.elementum"):
-            use_elementum_path = True
+    try:
+        path = sys.listitem.getfilename()
+    except AttributeError:
+        path = sys.listitem.getPath()
+    if path.startswith("plugin://plugin.video.elementum"):
+        use_elementum_path = True
 
-    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32009), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
-
-    if use_elementum_path:
-        log.info("Playing elementum item: path=%s, MediaType=%s" % (path, mediatype))
-        if mediatype == 'season':
-            url = re.sub(r'/(episodes)(/?[^/]*)$', r'/links\g<2>', path, count=1)
-        else:
-            url = path
+    if action == "play":
+        label = 32009
+        title = "Playing"
     else:
-        log.info("Playing library item: DBID=%s, MediaType=%s" % (dbid, mediatype))
-        url = "plugin://plugin.video.elementum/context/media/%s/%s/play" % (mediatype, dbid)
+        label = 32013
+        title = "Downloading"
 
-    log.info("Starting Elementum with: %s" % url)
-    xbmc.Player().play(url)
-
-
-def doDownload():
-    dbid = getDbId()
-    mediatype = getMediaType()
-
-    use_elementum_path = False
-    if not dbid.isdigit():
-        try:
-            path = sys.listitem.getfilename()
-        except AttributeError:
-            path = sys.listitem.getPath()
-        if path.startswith("plugin://plugin.video.elementum"):
-            use_elementum_path = True
-
-    xbmcgui.Dialog().notification(ADDON.getLocalizedString(32013), sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
-
-    if use_elementum_path:
-        log.info("Downloading elementum item: path=%s, MediaType=%s" % (path, mediatype))
-        if mediatype == 'season':
-            url = re.sub(r'/(episodes)(/?[^/]*)$', r'/download\g<2>', path, count=1)
-        else:
-            url = re.sub(r'/(play|links)(/?[^/]*)$', r'/download\g<2>', path, count=1)
+    if is_custom:
+        custom_token = "?custom=1"
     else:
-        log.info("Downloading library item: DBID=%s, MediaType=%s" % (dbid, mediatype))
-        url = "plugin://plugin.video.elementum/context/media/%s/%s/download" % (mediatype, dbid)
+        custom_token = ""
+
+    play_label = sys.listitem.getLabel()
+    play_label_quoted = quote(play_label)
+    xbmcgui.Dialog().notification(ADDON.getLocalizedString(label), play_label, xbmcgui.NOTIFICATION_INFO, 3000)
+
+    if action == "play":
+        if use_elementum_path:
+            log.info("%s elementum item: path=%s, MediaType=%s" % (title, path, mediatype))
+            if mediatype == 'season':
+                url = re.sub(r'/(episodes)(/?[^/]*)$', r'/links\g<2>', path, count=1)
+            else:
+                url = path
+            url = url + custom_token
+        elif dbid.isdigit():
+            log.info("%s library item: DBID=%s, MediaType=%s, path=%s" % (title, dbid, mediatype, path))
+            url = "plugin://plugin.video.elementum/context/media/%s/%s/play%s" % (mediatype, dbid, custom_token)
+        else:
+            log.info("%s unknown item: MediaType=%s, path=%s, label=%s" % (title, mediatype, path, play_label))
+            url = "plugin://plugin.video.elementum/context/media/query/%s/play%s" % (play_label_quoted, custom_token)
+    else:
+        if use_elementum_path:
+            log.info("%s elementum item: path=%s, MediaType=%s" % (title, path, mediatype))
+            if mediatype == 'season':
+                url = re.sub(r'/(episodes)(/?[^/]*)$', r'/download\g<2>', path, count=1)
+            else:
+                url = re.sub(r'/(play|links)(/?[^/]*)$', r'/download\g<2>', path, count=1)
+            url = url + custom_token
+        elif dbid.isdigit():
+            log.info("%s library item: DBID=%s, MediaType=%s" % (title, dbid, mediatype))
+            url = "plugin://plugin.video.elementum/context/media/%s/%s/download%s" % (mediatype, dbid, custom_token)
+        else:
+            log.info("%s unknown item: MediaType=%s, path=%s, label=%s" % (title, mediatype, path, play_label))
+            url = "plugin://plugin.video.elementum/context/media/query/%s/download/%s" % (play_label_quoted, custom_token)
 
     log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)

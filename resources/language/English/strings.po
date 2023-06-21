@@ -97,3 +97,11 @@ msgstr ""
 msgctxt "#32019"
 msgid "Mark as unwatched in Trakt"
 msgstr ""
+
+msgctxt "#32020"
+msgid "Play with custom search query"
+msgstr ""
+
+msgctxt "#32021"
+msgid "Download with custom search query"
+msgstr ""

@@ -97,3 +97,11 @@ msgstr "Отмет. просм. в Trakt"
 msgctxt "#32019"
 msgid "Mark as unwatched in Trakt"
 msgstr "Отмет. непросм. в Trakt"
+
+msgctxt "#32020"
+msgid "Play with custom search query"
+msgstr "Воспроизвести с измененным поисковым запросом"
+
+msgctxt "#32021"
+msgid "Download with custom search query"
+msgstr "Скачать с измененным поисковым запросом"
