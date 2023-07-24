@@ -189,6 +189,7 @@ def doLibraryAction(action):
         url = "plugin://plugin.video.elementum/library/%s/%s/%s" % (mediatype, action, tmdbID)
     else:
         url = "plugin://plugin.video.elementum/context/library/%s/%s/%s" % (mediatype, dbid, action)
+    url = url.replace("/tvshow", "/show")
     log.info("Starting Elementum with: %s" % url)
     xbmc.Player().play(url)
 
