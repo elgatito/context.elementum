@@ -180,7 +180,7 @@ def doLibraryAction(action):
         tmdbID = ""
     mediatype = getMediaType()
 
-    heading = ADDON.getLocalizedString(32017) if action == "add" else "Unsupported action"
+    heading = ADDON.getLocalizedString(32017) if action == "remove" else "Unsupported action"
     xbmcgui.Dialog().notification(heading, sys.listitem.getLabel(), xbmcgui.NOTIFICATION_INFO, 3000)
 
     log.info("%s library item: DBID=%s, MediaType=%s" % (action, dbid, mediatype))
