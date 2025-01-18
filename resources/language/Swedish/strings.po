@@ -96,7 +96,7 @@ msgstr "Markera som sedd i Trakt"
 
 msgctxt "#32019"
 msgid "Mark as unwatched in Trakt"
-msgstr "Markera som osedd i trakt"
+msgstr "Markera som osedd i Trakt"
 
 msgctxt "#32020"
 msgid "Play with custom search query"
