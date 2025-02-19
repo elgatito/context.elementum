@@ -24,7 +24,7 @@ msgstr "Spela"
 
 msgctxt "#32001"
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 msgctxt "#32002"
 msgid "Assign torrent"
@@ -64,7 +64,7 @@ msgstr "Tilldelar torrent med [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32011"
 msgid "[COLOR FF46B3B3]Elementum[/COLOR] Menu..."
-msgstr ""
+msgstr "[COLOR FF46B3B3]Elementum[/COLOR]-meny..."
 
 msgctxt "#32012"
 msgid "Download"
@@ -76,32 +76,32 @@ msgstr "Hämtar med [COLOR FF46B3B3]Elementum[/COLOR]"
 
 msgctxt "#32014"
 msgid "Could not find TMDB info"
-msgstr ""
+msgstr "Kunde inte hitta TMDB-info"
 
 msgctxt "#32015"
 msgid "Could not get torrent info"
-msgstr ""
+msgstr "Kunde inte få torrentinfo"
 
 msgctxt "#32016"
 msgid "Could not get Kodi library ID"
-msgstr ""
+msgstr "Kunde inte få Kodi-bibliotek-ID"
 
 msgctxt "#32017"
 msgid "Remove from library"
-msgstr ""
+msgstr "Ta bort från biblioteket"
 
 msgctxt "#32018"
 msgid "Mark as watched in Trakt"
-msgstr ""
+msgstr "Markera som sedd i Trakt"
 
 msgctxt "#32019"
 msgid "Mark as unwatched in Trakt"
-msgstr ""
+msgstr "Markera som osedd i Trakt"
 
 msgctxt "#32020"
 msgid "Play with custom search query"
-msgstr ""
+msgstr "Spela med anpassad sökförfråga"
 
 msgctxt "#32021"
 msgid "Download with custom search query"
-msgstr ""
+msgstr "Hämta med anpassad sökförfråga"
