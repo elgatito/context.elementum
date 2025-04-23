@@ -64,6 +64,9 @@ info_labels = [
     "ListItem.PercentPlayed",
 ]
 
+build_version = xbmc.getInfoLabel("System.BuildVersion")
+kodi_version = int(build_version.split()[0][:2])
+
 if __name__ == '__main__':
     item = sys.listitem  # xbmcgui.ListItem()
     try:
@@ -75,15 +78,15 @@ if __name__ == '__main__':
     dbid = xbmc.getInfoLabel('ListItem.DBID')
     mediatype = xbmc.getInfoLabel('ListItem.DBTYPE')
     try:
-        tmdbID = item.getUniqueID('tmdb')
+        tmdbID = item.getUniqueID('tmdb') if kodi_version < 20 else item.getVideoInfoTag().getUniqueID('tmdb')
     except AttributeError:
         tmdbID = "not supported"
 
     properties = {
-        'resume_time': item.getProperty('ResumeTime'),
+        'resume_time': item.getProperty('ResumeTime') if kodi_version < 20 else item.getVideoInfoTag().getResumeTime(),
+        'total_time': item.getProperty('TotalTime') if kodi_version < 20 else item.getVideoInfoTag().getResumeTimeTotal(),
         'start_offset': item.getProperty('StartOffset'),
         'start_percent': item.getProperty('StartPercent'),
-        'total_time': item.getProperty('TotalTime')
     }
     log.info("Properties: %s;" % properties)
 

@@ -30,6 +30,9 @@ from elementum.logger import log
 ADDON = xbmcaddon.Addon()
 api_key = ""
 
+build_version = xbmc.getInfoLabel("System.BuildVersion")
+kodi_version = int(build_version.split()[0][:2])
+
 
 def doAssign():
     mediatype = getMediaType()
@@ -42,7 +45,7 @@ def doAssign():
     use_elementum_path = False
 
     try:
-        tmdbID = sys.listitem.getUniqueID('tmdb')
+        tmdbID = sys.listitem.getUniqueID('tmdb') if kodi_version < 20 else sys.listitem.getVideoInfoTag().getUniqueID('tmdb')
     except AttributeError:
         tmdbID = ""
 
@@ -175,7 +178,7 @@ def doPlayDownload(action, is_custom=False):
 def doLibraryAction(action):
     dbid = getDbId()
     try:
-        tmdbID = sys.listitem.getUniqueID('tmdb')
+        tmdbID = sys.listitem.getUniqueID('tmdb') if kodi_version < 20 else sys.listitem.getVideoInfoTag().getUniqueID('tmdb')
     except AttributeError:
         tmdbID = ""
     mediatype = getMediaType()
@@ -208,7 +211,7 @@ def doTraktAction(action):
     if not dbid.isdigit():
         showtmdbid = xbmc.getInfoLabel('ListItem.Property(ShowTMDBId)')
         try:
-            tmdbID = sys.listitem.getUniqueID('tmdb')
+            tmdbID = sys.listitem.getUniqueID('tmdb') if kodi_version < 20 else sys.listitem.getVideoInfoTag().getUniqueID('tmdb')
         except AttributeError:
             tmdbID = ""
         if tmdbID == "" or ((mediatype == 'season' or mediatype == 'episode') and showtmdbid == ""):
