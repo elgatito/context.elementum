@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Burst changelog"
+echo "context.elementum changelog"
 echo "==============="
 git tag -l | sort -u -r -V | while read TAG ; do
     if [ $NEXT ];then

@@ -1,0 +1,78 @@
+context.elementum changelog
+===============
+
+[B]v0.0.13[/B] - 2023-08-02
+ - Version 0.0.13.
+ - Fixed "unsupported action"
+
+[B]v0.0.12[/B] - 2023-07-24
+ - Added a sleep before uploading releases.
+ - Version 0.0.12
+ - Fixed library calls for tvshows
+ - Added `release.sh` with a note.
+
+[B]v0.0.11[/B] - 2023-06-21
+ - Version 0.0.11
+ - Added functionality to allow custom play/download.
+ - Fixed check for xgettext
+ - Added check for xgettext
+ - Adjusted to run with python3.
+
+[B]v0.0.10[/B] - 2021-07-29
+ - Version 0.0.10
+ - add missing else in doPlay (#27)
+
+[B]v0.0.9[/B] - 2021-07-06
+ - version 0.0.9,
+ - special case for mediatype == 'season' (#25)
+ - Use elementum path for play/download (#24)
+
+[B]v0.0.8[/B] - 2021-06-21
+ - version 0.0.8
+ - try to use getUniqueID('tmdb') if possible (#21)
+
+[B]v0.0.7[/B] - 2021-06-18
+ - linter fix
+ - Version 0.0.7
+ - add ListItem.dbtype=tvshow for library remove (#19)
+ - Add Mark as watched in Trakt menu item (#18)
+ - Add "remove from library" menu item; Convert to submenus 
+   (#17)
+ - update xgettext_remove_old_messages.sh (#16)
+ - Cleanup: delete unused code and messages, sync messages 
+   (#15)
+
+[B]v0.0.6[/B] - 2021-05-14
+ - Version v0.0.6
+ - Add assign torrent functionality (#13)
+ - Updated built-in command
+ - add scripts/xgettext_remove_old_messages.sh
+
+[B]v0.0.5[/B] - 2021-03-16
+ - Version 0.0.5
+ - add season handling
+ - Create strings.po
+
+[B]v0.0.4[/B] - 2021-01-27
+ - added another translation for Download action
+ - version 0.0.4
+ - Add croatian language
+ - Italian translation
+
+[B]v0.0.3[/B] - 2020-03-12
+ - added Download action. Version 0.0.3.
+ - init Hebrew translate
+
+[B]v0.0.2[/B] - 2018-11-16
+ - adding search abilit to plugin. fixed for kodi 18 usage.
+
+[B]v0.0.1[/B] - 2018-02-02
+ - cleanup and initial Play action
+ - changing permissions for xgettext
+ - adding scripts
+ - adding requirements
+ - fixing version parser
+ - initial cleanup and commit
+ - creating ignore. cleaning up settings file.
+ - initial commit
+
