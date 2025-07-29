@@ -73,20 +73,30 @@ def doAssign():
                 xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32016), xbmcgui.NOTIFICATION_WARNING, 3000)
                 return
     else:
-        # Unlike Elementum - TMDB Helper uses TMDB id of the Show but not of the season/episode, so we would need to get their id in golang part
-        if path.startswith("plugin://plugin.video.themoviedb.helper"):
-            use_elementum_path = True
+        if path.startswith("plugin://plugin.video.themoviedb.helper") and mediatype != 'movie':
+            tmdb_addon = xbmcaddon.Addon('plugin.video.themoviedb.helper')
+            if tmdb_addon:
+                tmdb_addon_version = tmdb_addon.getAddonInfo('version')
+                try:
+                    tmdb_addon_version = int(tmdb_addon_version.split('.')[0])
+                except Exception:
+                    tmdb_addon_version = 0
 
-            if mediatype == 'season':
-                season_number = xbmc.getInfoLabel('ListItem.Season')
-                if not season_number:
-                    return
+            # Old versions of TMDB Helper use TMDB ID of season/episode, like Elementum.
+            # But new versions of TMDB Helper use TMDB ID of the Show, so we need to get their ID in golang part.
+            if tmdb_addon_version > 5:
+                use_elementum_path = True
 
-            if mediatype == 'episode':
-                season_number = xbmc.getInfoLabel('ListItem.Season')
-                episode_number = xbmc.getInfoLabel('ListItem.Episode')
-                if not season_number or not episode_number:
-                    return
+                if mediatype == 'season':
+                    season_number = xbmc.getInfoLabel('ListItem.Season')
+                    if not season_number:
+                        return
+
+                if mediatype == 'episode':
+                    season_number = xbmc.getInfoLabel('ListItem.Season')
+                    episode_number = xbmc.getInfoLabel('ListItem.Episode')
+                    if not season_number or not episode_number:
+                        return
 
     # we also can use plugin://plugin.video.elementum/torrents/
     file = xbmcgui.Dialog().browseSingle(1, ADDON.getLocalizedString(32010), 'files', '', False, False, 'plugin://plugin.video.elementum/history/')
