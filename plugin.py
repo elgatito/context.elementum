@@ -72,6 +72,21 @@ def doAssign():
                 log.error("Kodi library ID is wrong %s" % dbid)
                 xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32016), xbmcgui.NOTIFICATION_WARNING, 3000)
                 return
+    else:
+        # Unlike Elementum - TMDB Helper uses TMDB id of the Show but not of the season/episode, so we would need to get their id in golang part
+        if path.startswith("plugin://plugin.video.themoviedb.helper"):
+            use_elementum_path = True
+
+            if mediatype == 'season':
+                season_number = xbmc.getInfoLabel('ListItem.Season')
+                if not season_number:
+                    return
+
+            if mediatype == 'episode':
+                season_number = xbmc.getInfoLabel('ListItem.Season')
+                episode_number = xbmc.getInfoLabel('ListItem.Episode')
+                if not season_number or not episode_number:
+                    return
 
     # we also can use plugin://plugin.video.elementum/torrents/
     file = xbmcgui.Dialog().browseSingle(1, ADDON.getLocalizedString(32010), 'files', '', False, False, 'plugin://plugin.video.elementum/history/')
