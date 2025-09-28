@@ -51,6 +51,7 @@ def doAssign():
 
     if tmdbID == "":
         if path.startswith("plugin://plugin.video.elementum"):
+            log.debug("Using approach for old version of plugin.video.elementum")
             use_elementum_path = True
             tmdbID = getTMDBidFromElementumPath(path)
             if not tmdbID:
@@ -76,18 +77,18 @@ def doAssign():
                 xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32016), xbmcgui.NOTIFICATION_WARNING, 3000)
                 return
     else:
-        if path.startswith("plugin://plugin.video.themoviedb.helper") and mediatype != 'movie':
-            # Old versions of TMDB Helper used TMDB ID of season/episode, like Elementum.
-            # But new versions of TMDB Helper use TMDB ID of the Show. But both versions has tvshow.tmdb ID.
-            # So in order to work with old and new versions - we use tvshow.tmdb and then we get season/episode ID in golang part.
+        # Elementum uses TMDB ID of the season/episode for the  season/episode, so we can use it directly.
+        # But some addons (like new versions of TMDB Helper) use TMDB ID of the show for the season/episode.
+        # Thus, if they have generic "tvshow.tmdb" field - then we use it in conjunction with season/episode number,
+        # and then we get specific season's/episode's TMDB ID in golang part (by making extra API call).
+        try:
+            tvshow_tmdb = sys.listitem.getUniqueID('tvshow.tmdb') if kodi_version < 20 else sys.listitem.getVideoInfoTag().getUniqueID('tvshow.tmdb')
+        except AttributeError:
+            tvshow_tmdb = ""
+        if tvshow_tmdb:
+            log.debug("Using approach with 'tvshow.tmdb' field")
             use_elementum_path = True
-            try:
-                tmdbID = sys.listitem.getUniqueID('tvshow.tmdb') if kodi_version < 20 else sys.listitem.getVideoInfoTag().getUniqueID('tvshow.tmdb')
-            except AttributeError:
-                tmdbID = ""
-            if not tmdbID:
-                log.error("Could not get tmdbID for %s" % path)
-                return
+            tmdbID = tvshow_tmdb
 
             if mediatype == 'season':
                 season_number = xbmc.getInfoLabel('ListItem.Season')
