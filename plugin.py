@@ -51,20 +51,24 @@ def doAssign():
 
     if tmdbID == "":
         if path.startswith("plugin://plugin.video.elementum"):
+            log.debug("Using approach for old version of plugin.video.elementum")
             use_elementum_path = True
             tmdbID = getTMDBidFromElementumPath(path)
             if not tmdbID:
+                log.error("Could not get tmdbID for %s" % path)
                 return
 
             if mediatype == 'season':
                 season_number = getSeasonNumberFromElementumPath(path)
                 if not season_number:
+                    log.error("Could not get season_number for %s" % path)
                     return
 
             if mediatype == 'episode':
                 season_number = getSeasonNumberFromElementumPath(path)
                 episode_number = getEpisodeNumberFromElementumPath(path)
                 if not season_number or not episode_number:
+                    log.error("Could not get season_number or episode_number for %s" % path)
                     return
         else:
             dbid = getDbId()
@@ -72,11 +76,38 @@ def doAssign():
                 log.error("Kodi library ID is wrong %s" % dbid)
                 xbmcgui.Dialog().notification(ADDON.getLocalizedString(32007), ADDON.getLocalizedString(32016), xbmcgui.NOTIFICATION_WARNING, 3000)
                 return
+    else:
+        # Elementum uses TMDB ID of the season/episode for the  season/episode, so we can use it directly.
+        # But some addons (like new versions of TMDB Helper) use TMDB ID of the show for the season/episode.
+        # Thus, if they have generic "tvshow.tmdb" field - then we use it in conjunction with season/episode number,
+        # and then we get specific season's/episode's TMDB ID in golang part (by making extra API call).
+        try:
+            tvshow_tmdb = sys.listitem.getUniqueID('tvshow.tmdb') if kodi_version < 20 else sys.listitem.getVideoInfoTag().getUniqueID('tvshow.tmdb')
+        except AttributeError:
+            tvshow_tmdb = ""
+        if tvshow_tmdb:
+            log.debug("Using approach with 'tvshow.tmdb' field")
+            use_elementum_path = True
+            tmdbID = tvshow_tmdb
+
+            if mediatype == 'season':
+                season_number = xbmc.getInfoLabel('ListItem.Season')
+                if not season_number:
+                    log.error("Could not get season_number for %s" % path)
+                    return
+
+            if mediatype == 'episode':
+                season_number = xbmc.getInfoLabel('ListItem.Season')
+                episode_number = xbmc.getInfoLabel('ListItem.Episode')
+                if not season_number or not episode_number:
+                    log.error("Could not get season_number or episode_number for %s" % path)
+                    return
 
     # we also can use plugin://plugin.video.elementum/torrents/
     file = xbmcgui.Dialog().browseSingle(1, ADDON.getLocalizedString(32010), 'files', '', False, False, 'plugin://plugin.video.elementum/history/')
 
     if not file or file == 'plugin://plugin.video.elementum/history/':
+        log.info("User did not select a torrent.")
         return
 
     try:

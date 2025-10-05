@@ -15,6 +15,7 @@ info_labels = [
     "ListItem.Mediatype",
     "ListItem.TMDB",
     "ListItem.UniqueID(tmdb)",
+    "ListItem.UniqueID(tvshow.tmdb)",
     "ListItem.UniqueID(Elementum)",
     "ListItem.Property(ShowTMDBId)",
     "ListItem.Label",
