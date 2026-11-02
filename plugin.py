@@ -142,7 +142,7 @@ def doAssign():
 
     log.info("Starting Elementum with: %s" % url)
 
-    xbmc.Player().play(url)
+    xbmc.executebuiltin('RunPlugin(%s)' % url)
 
 
 def doPlayDownload(action, is_custom=False):
@@ -203,7 +203,11 @@ def doPlayDownload(action, is_custom=False):
             url = "plugin://plugin.video.elementum/context/media/query/%s/download/%s" % (play_label_quoted, custom_token)
 
     log.info("Starting Elementum with: %s" % url)
-    xbmc.Player().play(url)
+    if action == "play":
+        xbmc.Player().play(url)
+    else:
+        # Download does not start playback, so Player().play() would end with "Playback failed"
+        xbmc.executebuiltin('RunPlugin(%s)' % url)
 
 
 def doLibraryAction(action):
@@ -225,7 +229,7 @@ def doLibraryAction(action):
         url = "plugin://plugin.video.elementum/context/library/%s/%s/%s" % (mediatype, dbid, action)
     url = url.replace("/tvshow", "/show")
     log.info("Starting Elementum with: %s" % url)
-    xbmc.Player().play(url)
+    xbmc.executebuiltin('RunPlugin(%s)' % url)
 
 
 def doTraktAction(action):
@@ -271,7 +275,7 @@ def doTraktAction(action):
     else:
         url = "plugin://plugin.video.elementum/context/media/%s/%s/%s" % (mediatype, dbid, action)
     log.info("Starting Elementum with: %s" % url)
-    xbmc.Player().play(url)
+    xbmc.executebuiltin('RunPlugin(%s)' % url)
 
 
 def getDbId():
