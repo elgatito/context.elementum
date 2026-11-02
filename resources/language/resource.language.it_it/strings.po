@@ -1,7 +1,7 @@
 # Kodi Media Center language file
-# Addon Name: provider
-# Addon id: context.magnetic.dialog
-# Addon Provider: mancuniancol
+# Addon Name: Elementum Context Helper
+# Addon id: context.elementum
+# Addon Provider: elgatito
 #
 msgid ""
 msgstr ""
